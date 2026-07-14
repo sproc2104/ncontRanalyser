@@ -1,4 +1,4 @@
-Package: 'ncontRanalyser'
+Package: ncontRanalyser
 Type: Package
 Title: 'CCP4 NCONT Antibody-Antigen Data Tranformation and Analysis'
 Version: 0.1.0
