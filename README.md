@@ -15,7 +15,11 @@ Don't mind me :)
 You can install the development version of 'ncontRanalyser' like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+# requires devtools
+
+# then use
+install_github("sproc2104/ncontRanalyser")
+
 ```
 
 ## Example
