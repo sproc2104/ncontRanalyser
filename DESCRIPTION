@@ -1,0 +1,18 @@
+Package: 'ncontRanalyser'
+Type: Package
+Title: 'CCP4 NCONT Antibody-Antigen Data Tranformation and Analysis'
+Version: 0.1.0
+Date: 2026-07-14
+Authors@R: person("Sara", "Procacci", , "saraprocacci04@gmail.com", role=c("aut", "cre"))
+Description: Transforms data from CCP4 NCONT (v8.0.019) to dataframe format and 
+    calculates n/d (count/ distance) ratios in antibody-antigen interactions. 
+    Use a reference structure to calculate n/d quartiles (or manually input these) 
+    and applies these to structures with mutated antigen. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.3
+Imports: 
+    dplyr,
+    magrittr,
+    stringr
