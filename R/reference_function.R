@@ -28,9 +28,9 @@ reference_analysis<- function(h_file, k_file) {
   }
 
   #prepare ab resis dataframe
-  h_abresis<- as.data.frame(str_split_fixed(h_df$V1, "/", 5))
+  h_abresis<- as.data.frame(stringr::str_split_fixed(h_df$V1, "/", 5))
   h_abresis$V4<- substr(h_abresis$V4, 1, 8)
-  h_abresis$V4<- str_replace(h_abresis$V4, "\\(", "-")
+  h_abresis$V4<- stringr::str_replace(h_abresis$V4, "\\(", "-")
   h_abresis$V5<- substr(h_abresis$V5, 1, 8)
   h_abresis$dist<- substr(h_df$V2, 28,32)
   h_abresis<- subset(h_abresis, select=c(V4,V5, dist))
@@ -38,11 +38,11 @@ reference_analysis<- function(h_file, k_file) {
   h_abresis$dist<- as.numeric(h_abresis$dist)
 
   #prepare ag resis dataframe
-  h_agresis<- as.data.frame(str_split_fixed(h_df$V2, "/", 4))
+  h_agresis<- as.data.frame(stringr::str_split_fixed(h_df$V2, "/", 4))
   h_agresis$dist<- substr(h_agresis$V4, 13,16)
   h_agresis$V4<- substr(h_agresis$V4, 1,8)
   h_agresis$V3<- substr(h_agresis$V3, 1,8)
-  h_agresis$V3<- str_replace(h_agresis$V3, "\\(", "-")
+  h_agresis$V3<- stringr::str_replace(h_agresis$V3, "\\(", "-")
   h_agresis<- subset(h_agresis, select= c("V3", "V4", "dist"))
   colnames(h_agresis)<- c("ag_resi", "ag_resi_atom", "dist.")
   h_agresis$dist.<- as.numeric(h_agresis$dist.)
@@ -76,20 +76,20 @@ reference_analysis<- function(h_file, k_file) {
   }
 
   #prepare ab resis dataframe
-  k_abresis<- as.data.frame(str_split_fixed(k_df$V1, "/", 5))
+  k_abresis<- as.data.frame(stringr::str_split_fixed(k_df$V1, "/", 5))
   k_abresis$V4<- substr(k_abresis$V4, 1, 8)
-  k_abresis$V4<- str_replace(k_abresis$V4, "\\(", "-")
+  k_abresis$V4<- stringr::str_replace(k_abresis$V4, "\\(", "-")
   k_abresis$V5<- substr(k_abresis$V5, 1, 8)
   k_abresis<- subset(k_abresis, select=c(V4,V5))
   colnames(k_abresis)<- c("ab_resi", "ab_resi_atom")
 
 
   #prepare ag resis dataframe
-  k_agresis<- as.data.frame(str_split_fixed(k_df$V2, "/", 4))
+  k_agresis<- as.data.frame(stringr::str_split_fixed(k_df$V2, "/", 4))
   k_agresis$dist<- substr(k_agresis$V4, 13,16)
   k_agresis$V4<- substr(k_agresis$V4, 1,8)
   k_agresis$V3<- substr(k_agresis$V3, 1,8)
-  k_agresis$V3<- str_replace(k_agresis$V3, "\\(", "-")
+  k_agresis$V3<- stringr::str_replace(k_agresis$V3, "\\(", "-")
   k_agresis<- subset(k_agresis, select=c("V3", "V4", "dist"))
   colnames(k_agresis)<- c("ag_resi", "ag_resi_atom", "dist")
 
