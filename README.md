@@ -1,6 +1,6 @@
 
 # ncontRanalyser
-<!-- badges: start -->
+<!-- badges: start --> Package to transform and analyse CCP4 NCONT data
 <!-- badges: end -->
 
 The goal of 'ncontRanalyser' is to take CCP4 ncont output .txt files and generate dataframes which can be used for downstream analysis. This package contains functions to both carry out analysis of NCONT antibody and antigen data, generating AlphaFold-Predicted Epitopes (AFPE) and AlphaFold-Predicted Paratopes (AFPP- more below), or may be used simply to convert .txt fils to dataframes. Results in .txt file formats can be generated using command line CCP4 NCONT. For sample code on how to run this, scroll to the very bottom.
