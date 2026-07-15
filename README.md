@@ -1,11 +1,11 @@
 
 # ncontRanalyser
-<!-- badges: start --> Package to transform and analyse CCP4 NCONT data
+<!-- badges: start --> 
 <!-- badges: end -->
 
-The goal of 'ncontRanalyser' is to take CCP4 ncont output .txt files and generate dataframes which can be used for downstream analysis. This package contains functions to both carry out analysis of NCONT antibody and antigen data, generating AlphaFold-Predicted Epitopes (AFPE) and AlphaFold-Predicted Paratopes (AFPP- more below), or may be used simply to convert .txt fils to dataframes. Results in .txt file formats can be generated using command line CCP4 NCONT. For sample code on how to run this, scroll to the very bottom.
+The goal of ncontRanalyser is to take CCP4 NCONT output .txt files and generate dataframes which can be used for downstream analysis. This package contains functions to both carry out analysis of NCONT antibody and antigen data, generating AlphaFold-Predicted Epitopes (AFPE) and AlphaFold-Predicted Paratopes (AFPP- more below), or may be used simply to convert .txt fils to dataframes. Results in .txt file formats can be generated using command line CCP4 NCONT. For sample code on how to run this, scroll to the very bottom.
 
-Note the functions in this package work for the output from CCP4 NCONT v8.0.0, and does not support other versions of CCP4 NCONT.
+Note the functions in this package work for the output from CCP4 NCONT v8.0.019, and does not support other versions of CCP4 NCONT.
 
 ## Installation
 
@@ -22,20 +22,22 @@ remotes::install_github("sproc2104/ncontRanalyser")
 
 ## Reference-based analysis
 
-This is a basic example which shows you how to solve a common problem:
-
-
-
-``` r
-library('ncontRanalyser')
-## basic example code
-
-
-```
+When a reference structure is provided and analysed using the ```reference_analysis()``` command, it is used to calculate antibody and antigen n/d (ratio of number of contacts to avergae distance) quartiles for the NCONT contacts. These quartiles can then be used to detect changes in the predicted epitope and paratope residues by using the ```mutant_analysis()``` command.
 
 Note that the ```reference_analysis()``` command **must be assigned to a variable named ```ref```**. If it is not, then the ```mutant_analysis()``` command will not recognise the quartiles generated from the reference structure, and will fail.
 
-The significance of the quartiles is arbitrary, but in previous analysis, I have selected those in the top quartile and above as composing an AlphaFold-predicted epitope (AFPE).
+The ```reference_analysis()``` and ```mutant_analysis()``` commands take as input the .txt files containing NCONT ouptputs for the reference or mutant structures, respectively.
+``` r
+library('ncontRanalyser')
+
+ref<- reference_analysis("ref_heavychain.txt", "ref_lightchain.txt")
+ref ##to see output
+
+mut<- mutant_analysis("mutant_heavychain.txt", "mutant_lightchain.txt")
+mut
+```
+
+The significance of the quartiles is arbitrary, but in previous analysis, I have selected those in the Q1 and above as composing the AFPE or AFPP.
 
 
 ## Reference-free analysis (own quartile input)
@@ -47,9 +49,9 @@ Quartiles must be provided in the vector form, where:
 ab_quartiles<- c(max_val, Q1, Q2, Q3)
 ag_quartiles<- c(max_val, Q1, Q2, Q3)
 ```
-These can then be passed to the ```mutant_analysis``` function, which will assign antigen and antibody residue quartiles based on these values.
+These can then be passed to the ```mutant_analysis()``` function, which will assign antigen and antibody residue quartiles based on these values.
 ``` r
-mut<- mutant_analysis(h_file, k_file, ab_quartiles, ag_quartiles)
+mut<- mutant_analysis("mutant_heavychain.txt", "mutant_lightchain.txt", ab_quartiles, ag_quartiles)
 ```
 
 ## Saving files
