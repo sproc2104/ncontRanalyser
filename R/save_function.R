@@ -1,6 +1,6 @@
 ############ SAVE FUNCTION
 
-save_csv<- function(output, antibody_output, antigen_output){
+save_csv<- function(output, ab_file_name, ag_file_name){
 
   #first label every table with a H or k column to tell them apart
   h_ab_table<- cbind(chain="H", output[[3]])
@@ -12,7 +12,7 @@ save_csv<- function(output, antibody_output, antigen_output){
   ab_output<- rbind(h_ab_table, k_ab_table)
   ag_output<- rbind(h_ag_table, k_ag_table)
 
-  write.csv(ab_output, antibody_output)
-  write.csv(ag_output, antigen_output)
+  write.csv(ab_output, ab_file_name)
+  write.csv(ag_output, ag_file_name)
 
 }
