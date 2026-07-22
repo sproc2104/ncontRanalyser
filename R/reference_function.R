@@ -217,7 +217,7 @@ reference_analysis<- function(h_file, k_file) {
 
   ref_output<- list("Ag quartiles"=ag_quart, "Ab quartiles"=ab_quart,
                     "Antibody H residues"= h_ab_table, "Antibody k residues"=k_ab_table,
-                    "Antigen residues H interacting"= h_ag_table, "Antigen residues k interacting"=k_ab_table)
+                    "Antigen residues H interacting"= h_ag_table, "Antigen residues k interacting"=k_ag_table)
   return(ref_output)
 
 }
