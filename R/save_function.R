@@ -9,7 +9,9 @@ save_csv<- function(output, ab_file_name, ag_file_name){
   k_ag_table<- cbind(int_chain="k", output[[6]])
 
   #will make a mega table with all of these next to each other
+  colnames(h_ab_table)<- colnames(k_ab_table)
   ab_output<- rbind(h_ab_table, k_ab_table)
+  colnames(h_ag_table)<- colnames(k_ag_table)
   ag_output<- rbind(h_ag_table, k_ag_table)
 
   write.csv(ab_output, ab_file_name)
